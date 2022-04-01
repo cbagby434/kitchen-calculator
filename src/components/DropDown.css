@@ -1,4 +1,15 @@
 .dropDown{
-	height: 57px;
-    width: 320px;
+	height: 3.5625rem;
+    width: 20rem;
+}
+
+@media only screen and (max-width: 769px) {
+	.dropDown{
+		width: 15rem;
+	}
+}
+@media only screen and (max-width: 550px) {
+	.dropDown{
+		width: 9.375rem;
+	}
 }

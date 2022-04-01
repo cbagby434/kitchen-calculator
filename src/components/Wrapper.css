@@ -1,6 +1,9 @@
 .wrapper{
-	width: 800px;
-	height: 567px;
-	border: solid 1px #000;
-	background-color: #fff;
+	height: auto;
+    border: solid 1px #000;
+    background-color: #fff;
+    margin: 5.5rem auto;
+    max-width: 50rem;
+    min-width: 15.625rem;
+    box-sizing: border-box;
 }

@@ -1,10 +1,22 @@
 .titleBar{
 	background-color: #DAE8FC;
-	color: #000;
-	height: 99px;
-	width: 100%;
-	font-size: 50px;
-    line-height: 99px;
+    color: #000;
+    height: auto;
+    width: 100%;
+    font-size: 3.125rem;
+    line-height: 6.1875rem;
     border-bottom: solid 1px black;
     text-align: center;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1em;
+}
+
+@media only screen and (max-width: 769px) {
+	.titleBar{
+		font-size: 2.5rem;
+		line-height: 5rem;
+	}
 }

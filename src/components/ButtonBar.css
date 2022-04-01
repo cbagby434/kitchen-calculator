@@ -1,8 +1,22 @@
 .buttonBar{
 	width: 100%;
-	height: 67px;
-	background-color: green;
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+    background-color: #BBCFE0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(1, 4.1875rem);
     align-items: center;
+    box-sizing: border-box;
+}
+@media only screen and (max-width: 769px) {
+	.buttonBar{
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(2, 4.1875rem);
+		border-bottom: solid 1px #000;
+	}
+}
+@media only screen and (max-width: 550px) {
+	.buttonBar{
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(3, 4.1875rem);
+	}
 }

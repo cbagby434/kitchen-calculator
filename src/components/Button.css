@@ -5,10 +5,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 20px;
+	font-size: 1.25rem;
 	border-left: solid 1px #000;
-	border-top: solid 1px #000;
 	border-bottom: solid 1px #000;
+	box-sizing: border-box;
 }
 .button.first{
 	border-left: none;
@@ -19,4 +19,33 @@
 .button.selected{
 	background-color: #fff;
 	border-bottom: none;
+}
+@media only screen and (max-width: 769px) {
+	.button, .button.first{
+		border-top: none;
+		border-bottom: solid 1px #000;
+	}
+	.button.last{
+		border-right: solid 1px #000;
+	}
+	[data-name="Temp"]{
+		border-left: none;
+		border-bottom: none;
+	}
+	[data-name="Special"]{
+		border-bottom: none;
+	}
+}
+@media only screen and (max-width: 550px) {
+	.button{
+		border-bottom: solid 1px #000;
+		border-left: none;
+		border-right: solid 1px #000;
+	}
+	[data-name="Special"]{
+		border-bottom: none;
+	}
+	[data-name="Temp"], [data-name="Weight"]{
+		border-right: none;
+	}
 }
