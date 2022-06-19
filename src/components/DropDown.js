@@ -1,7 +1,7 @@
 import	'./DropDown.css';
 
-const DropDown = ({ children }) => {
-	return <select className='dropDown'>{children}</select>
+const DropDown = ({ children, onChange }) => {
+	return <select className='dropDown' onChange={onChange}>{children}</select>
 }
 
 export default DropDown
