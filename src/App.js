@@ -10,16 +10,13 @@ const btnVals = ['Volume', 'Weight', 'Time', 'Temp', 'Special'];
 
 const App = () => {
 
-  let [measurementType, setMeasurementType] = useState('Volume')
-  console.log(measurementType)
+  let [measurementType, setMeasurementType] = useState('Volume');
 
   let handleMeasurementTypeChange = (e) => {
     document.getElementsByClassName('selected')[0].classList.remove('selected');
     setMeasurementType(e.target.innerHTML);
     e.target.classList.add('selected');
   }
-
-  //<DropDown onChange={handleFruitChange}> 
 
   return (
     <Wrapper>
