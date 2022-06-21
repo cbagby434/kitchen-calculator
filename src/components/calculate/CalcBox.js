@@ -5,113 +5,89 @@ import TextBox from './TextBox';
 import DropDown from './DropDown';
 import Equals from './Equals';
 import calcConv from '../../js/calc.js'
+import measurementStates from '../../js/measurementStates.js'
 
-const CalcBox = ({ measurementType }) => {
+const CalcBox = (AppProps) => {
 	let options = null;
 
-	let [compIn, setCompInValue] = useState(0)
-	let [compOut, setCompOutValue] = useState(0)
-	let [inMeasurement, setInMeasurement] = useState('tsp');
-  	let [outMeasurement, setOutMeasurement] = useState('tsp');
-
-	const measurementStates = {
-	    'Volume': {
-	      measurements:['tsp', 'tbsp', 'cup', 'oz', 'pt', 'qt', 'g', 'ml', 'L']
-	    },
-	    'Weight': {
-	      measurements:['g', 'kg', 'lb', 'oz']
-	    },
-	    'Time': {
-	      measurements:['sec', 'min', 'hr', 'day']
-	    },
-	    'Temp': {
-	      measurements:['C', 'F']
-	    },
-	    'Special': {
-	      measurements:['dash']
-	    }
-	}
-	switch(measurementType){
-	    case 'Volume':
-	      options = measurementStates['Volume'].measurements.map((el) => <option key={el}>{el}</option>);
-	      break;
-	    case 'Weight':
-	      options = measurementStates['Weight'].measurements.map((el) => <option key={el}>{el}</option>);
-	      break;
-	    case 'Time':
-	      options = measurementStates['Time'].measurements.map((el) => <option key={el}>{el}</option>);
-	      break;
-	    case 'Temp':
-	      options = measurementStates['Temp'].measurements.map((el) => <option key={el}>{el}</option>);
-	      break;
-	    case 'Special':
-	      options = measurementStates['Special'].measurements.map((el) => <option key={el}>{el}</option>);
-	      break;
-	}
-
-	let handleTextBoxChange = (e) => {
-		let targetClass = e.target.parentNode.classList[1];
+	let handleCalculations = (handler, elem) => {
+		let targetClass = elem.target.parentNode.classList[1];
 		let thisBox = 'comp'+targetClass.charAt(0).toUpperCase()+targetClass.slice(1);
-		let oppositeBox = thisBox === 'compIn' ? 'compOut' : 'compIn';
-		let inValue, outValue;
-
-		/*console.log(e.target.classList[1]);
-		console.log(e.target.value);
-		console.log(thisBox, oppositeBox);*/
+		let inValue, outValue, funcInputMeas, funcInputValue;
 
 		switch(thisBox){
 			case 'compIn':
-				setCompInValue(e.target.value);
-				outValue = calcConv(measurementType, inMeasurement, outMeasurement, e.target.value);
-				setCompOutValue(outValue);
+				if(handler == 'textBox'){
+					AppProps.setCompInValue(elem.target.value);
+				} else{
+					AppProps.setInMeasurement(elem.target.value);
+				}
+				funcInputMeas = handler == 'textBox' ? AppProps.inMeasurement : elem.target.value;
+				funcInputValue = handler == 'textBox' ? elem.target.value : AppProps.compIn;
+				outValue = calcConv(AppProps.measurementType, funcInputMeas, AppProps.outMeasurement, funcInputValue);
+				AppProps.setCompOutValue(outValue);
 				break;
 			case 'compOut':
-				setCompOutValue(e.target.value);
-				inValue = calcConv(measurementType, outMeasurement, inMeasurement, e.target.value);
-				setCompInValue(inValue);
+				if(handler == 'textBox'){
+					AppProps.setCompOutValue(elem.target.value);
+				} else{
+					AppProps.setOutMeasurement(elem.target.value);
+				}
+				funcInputMeas = handler == 'textBox' ? AppProps.outMeasurement : elem.target.value;
+				funcInputValue = handler == 'textBox' ? elem.target.value : AppProps.compOut;
+				inValue = calcConv(AppProps.measurementType, funcInputMeas, AppProps.inMeasurement, funcInputValue);
+				AppProps.setCompInValue(inValue);
 				break;
 		}
 
-		
+	}
+	let handleTextBoxChange = (e) => {
+		console.log('---handleTextBoxChange called---');
+		handleCalculations('textBox', e);
 	}
 
 	let handleDropDownChange = (e) => {
-		let targetClass = e.target.parentNode.classList[1];
-		let thisBox = 'comp'+targetClass.charAt(0).toUpperCase()+targetClass.slice(1);
-		let inValue, outValue;
+		console.log('---handleDropDownChange called---')
+		handleCalculations('dropDown', e);
+	}
 
-		switch(thisBox){
-			case 'compIn':
-				setInMeasurement(e.target.value);
-				outValue = calcConv(measurementType, e.target.value, outMeasurement, compIn);
-				setCompOutValue(outValue);
-				break;
-			case 'compOut':
-				setOutMeasurement(e.target.value);
-				inValue = calcConv(measurementType, e.target.value, inMeasurement, compOut);
-				setCompInValue(inValue);
-				break;
-		}
+
+	let updateOptions = (measType) => {
+		options = measurementStates[measType].measurements.map((el) => <option key={el}>{el}</option>);
+	}
+
+	switch(AppProps.measurementType){
+		case 'Volume':
+			updateOptions('Volume')			
+			break;
+		case 'Weight':
+			updateOptions('Weight')
+			break;
+		case 'Time':
+			updateOptions('Time')
+			break;
+		case 'Temp':
+			updateOptions('Temp')
+			break;
+		case 'Special':
+			updateOptions('Special')
+			break;
 	}
 
 
 	return (
 		<div className="calcBox">
 			<CalcComp className="calcComp in">
-	        	<TextBox onChange={handleTextBoxChange} className="textBox" value={compIn}/>
+	        	<TextBox onChange={handleTextBoxChange} className="textBox" value={AppProps.compIn}/>
 	        	<DropDown onChange={handleDropDownChange}> 
-	        		{
-	              		options
-	            	}
+	        		{options}
 	          	</DropDown>        
 	        </CalcComp>
 	        <Equals />
 	        <CalcComp className="calcComp out">
-	          	<TextBox onChange={handleTextBoxChange} className="textBox" value={compOut}/>
+	          	<TextBox onChange={handleTextBoxChange} className="textBox" value={AppProps.compOut}/>
 	          	<DropDown onChange={handleDropDownChange}>
-		            {
-		              options
-		            }
+		            {options}
 	          	</DropDown>
 	        </CalcComp>
         </div>

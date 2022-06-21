@@ -1,156 +1,154 @@
-
-
 const measurementConversions = {
     'Volume': {
-    	'tsp': {
-			'tsp': 1,
-			'tbsp':(1/3),
+    	'teaspoon': {
+			'teaspoon': 1,
+			'tablespoon':(1/3),
 			'cup': (1/48),
-			'oz': (1/6),
-			'pt': (1/96),
-			'qt': (1/192),
-			'g': (1/768),
-			'ml': 4.929,
-			'L': (1/202.9)
+			'fluid ounce': (1/6),
+			'pint': (1/96),
+			'quart': (1/192),
+			'gallon': (1/768),
+			'milliliter': 4.929,
+			'liter': (1/202.9)
     	},
-    	'tbsp': {
-    		'tsp': 3,
-			'tbsp':1,
+    	'tablespoon': {
+    		'teaspoon': 3,
+			'tablespoon':1,
 			'cup': (1/16),
-			'oz': (1/2),
-			'pt': (1/32),
-			'qt': (1/64),
-			'g': (1/256),
-			'ml': 14.787,
-			'L': (1/67.628)
+			'fluid ounce': (1/2),
+			'pint': (1/32),
+			'quart': (1/64),
+			'gallon': (1/256),
+			'milliliter': 14.787,
+			'liter': (1/67.628)
     	},
     	'cup':{
-    		'tsp': 48,
-			'tbsp': 16,
+    		'teaspoon': 48,
+			'tablespoon': 16,
 			'cup': 1,
-			'oz': 8,
-			'pt': (1/2),
-			'qt': (1/4),
-			'g': (1/16),
-			'ml': 236.6,
-			'L': (1/4.227)
+			'fluid ounce': 8,
+			'pint': (1/2),
+			'quart': (1/4),
+			'gallon': (1/16),
+			'milliliter': 236.6,
+			'liter': (1/4.227)
     	},
-    	'oz':{
-    		'tsp': 6,
-			'tbsp': 2,
+    	'fluid ounce':{
+    		'teaspoon': 6,
+			'tablespoon': 2,
 			'cup': 8,
-			'oz': 1,
-			'pt': (1/16),
-			'qt': (1/32),
-			'g': (1/128),
-			'ml': 29.574,
-			'L': (1/33.814)
+			'fluid ounce': 1,
+			'pint': (1/16),
+			'quart': (1/32),
+			'gallon': (1/128),
+			'milliliter': 29.574,
+			'liter': (1/33.814)
     	},
-    	'pt':{
-    		'tsp': 96,
-			'tbsp': 32,
+    	'pint':{
+    		'teaspoon': 96,
+			'tablespoon': 32,
 			'cup': 2,
-			'oz': 16,
-			'pt': 1,
-			'qt': (1/2),
-			'g': (1/8),
-			'ml': 473.2,
-			'L': (1/2.113)
+			'fluid ounce': 16,
+			'pint': 1,
+			'quart': (1/2),
+			'gallon': (1/8),
+			'milliliter': 473.2,
+			'liter': (1/2.113)
     	},
-    	'qt':{
-    		'tsp': 192,
-			'tbsp': 64,
+    	'quart':{
+    		'teaspoon': 192,
+			'tablespoon': 64,
 			'cup': 4,
-			'oz': 32,
-			'pt': 2,
-			'qt': 1,
-			'g': (1/4),
-			'ml': 946.4,
-			'L': (1/1.057)
+			'fluid ounce': 32,
+			'pint': 2,
+			'quart': 1,
+			'gallon': (1/4),
+			'milliliter': 946.4,
+			'liter': (1/1.057)
     	},
-    	'g':{
-    		'tsp': 768,
-			'tbsp': 256,
+    	'gallon':{
+    		'teaspoon': 768,
+			'tablespoon': 256,
 			'cup': 16,
-			'oz': 128,
-			'pt': 8,
-			'qt': 4,
-			'g': 1,
-			'ml': 3785.41,
-			'L': 3.78541
+			'fluid ounce': 128,
+			'pint': 8,
+			'quart': 4,
+			'gallon': 1,
+			'milliliter': 3785.41,
+			'liter': 3.78541
     	},
-    	'ml':{
-    		'tsp': (1/4.929),
-			'tbsp':(1/14.787),
+    	'milliliter':{
+    		'teaspoon': (1/4.929),
+			'tablespoon':(1/14.787),
 			'cup': (1/236.6),
-			'oz': (1/29.574),
-			'pt': (1/473.2),
-			'qt': (1/946.4),
-			'g': (1/3785),
-			'ml': 1,
-			'L': (1/1000)
+			'fluid ounce': (1/29.574),
+			'pint': (1/473.2),
+			'quart': (1/946.4),
+			'gallon': (1/3785),
+			'milliliter': 1,
+			'liter': (1/1000)
     	},
-    	'L':{
-    		'tsp': 202.9,
-			'tbsp':67.628,
+    	'liter':{
+    		'teaspoon': 202.9,
+			'tablespoon':67.628,
 			'cup': 4.227,
-			'oz': 33.814,
-			'pt': 2.113,
-			'qt': 1.057,
-			'g': (1/3.785),
-			'ml': 1000,
-			'L': 1
+			'fluid ounce': 33.814,
+			'pint': 2.113,
+			'quart': 1.057,
+			'gallon': (1/3.785),
+			'milliliter': 1000,
+			'liter': 1
     	}
     },
     'Weight': {
-    	'g':{
-    		'g': 1,
-    		'kg': (1/1000),
-    		'lb': (1/453.6),
-    		'oz': (1/28.35)
+    	'gram':{
+    		'gram': 1,
+    		'kilogram': (1/1000),
+    		'pound': (1/453.6),
+    		'ounce': (1/28.35)
     	},
-    	'kg':{
-    		'g': 1000,
-    		'kg': 1,
-    		'lb': 2.205,
-    		'oz': 35.274
+    	'kilogram':{
+    		'gram': 1000,
+    		'kilogram': 1,
+    		'pound': 2.205,
+    		'ounce': 35.274
     	},
-    	'lb':{
-    		'g': 453.6,
-    		'kg': (1/2.205),
-    		'lb': 1,
-    		'oz': 16
+    	'pound':{
+    		'gram': 453.6,
+    		'kilogram': (1/2.205),
+    		'pound': 1,
+    		'ounce': 16
     	},
-    	'oz':{
-    		'g': 28.35,
-    		'kg': (1/35.274),
-    		'lb': (1/16),
-    		'oz': 1
+    	'ounce':{
+    		'gram': 28.35,
+    		'kilogram': (1/35.274),
+    		'pound': (1/16),
+    		'ounce': 1
     	}
     },
     'Time': {
-    	'sec':{
-    		'sec': 1,
-    		'min': (1/60),
-    		'hr': (1/3600),
+    	'second':{
+    		'second': 1,
+    		'minute': (1/60),
+    		'hour': (1/3600),
     		'day': 1/86400
     	},
-    	'min':{
-    		'sec': 60,
-    		'min': 1,
-    		'hr': (1/60),
+    	'minute':{
+    		'second': 60,
+    		'minute': 1,
+    		'hour': (1/60),
     		'day': (1/1440)
     	},
-    	'hr':{
-    		'sec': 3600,
-    		'min': 60,
-    		'hr': 1,
+    	'hour':{
+    		'second': 3600,
+    		'minute': 60,
+    		'hour': 1,
     		'day': 24
     	},
     	'day':{
-    		'sec': 86400,
-    		'min': 1440,
-    		'hr': 24,
+    		'second': 86400,
+    		'minute': 1440,
+    		'hour': 24,
     		'day': 1
     	}
     },
@@ -159,7 +157,7 @@ const measurementConversions = {
     		if (tempOut === tempIn) {
     			return tempVal;
     		}
-    		if (tempIn === 'C') {
+    		if (tempIn === 'Celsius') {
     			return ((tempVal * 9/5) + 32);
     		} else{
     			return ((tempVal - 32) * 5/9);
@@ -172,6 +170,9 @@ const measurementConversions = {
 }
 
 const calcConv = (type, inMeas, outMeas, inVal) => {
+	if(type == 'Temp'){
+		return measurementConversions[type].newTemp(inMeas, outMeas, inVal);
+	}
 	const convFactor = measurementConversions[type][inMeas][outMeas];
 	const outVal = inVal * convFactor; 
 	console.log('Measurement Type: ', type,'\n','Input Measurement: ', inMeas,'\n', 'Output Measurement: ', outMeas,'\n', 'Input Value: ', inVal,'\n', 'Output Value: ',outVal,'\n');
