@@ -8,7 +8,8 @@ import calcConv from '../../js/calc.js'
 import measurementStates from '../../js/measurementStates.js'
 
 const CalcBox = (AppProps) => {
-	let options = null;
+	let optionsIn = null;
+	let optionsOut = null;
 
 	let handleCalculations = (handler, elem) => {
 		let targetClass = elem.target.parentNode.classList[1];
@@ -53,7 +54,9 @@ const CalcBox = (AppProps) => {
 
 
 	let updateOptions = (measType) => {
-		options = measurementStates[measType].measurements.map((el) => <option key={el}>{el}</option>);
+		optionsIn = measurementStates[measType].measurements[0].map((el) => <option key={el}>{el}</option>);
+		optionsOut = !measurementStates[measType].optionSplit ? optionsIn : measurementStates[measType].measurements[1].map((el) => <option key={el}>{el}</option>);
+		console.log(AppProps.inMeasurement, AppProps.outMeasurement)
 	}
 
 	switch(AppProps.measurementType){
@@ -80,14 +83,14 @@ const CalcBox = (AppProps) => {
 			<CalcComp className="calcComp in">
 	        	<TextBox onChange={handleTextBoxChange} className="textBox" value={AppProps.compIn}/>
 	        	<DropDown onChange={handleDropDownChange}> 
-	        		{options}
+	        		{optionsIn}
 	          	</DropDown>        
 	        </CalcComp>
 	        <Equals />
 	        <CalcComp className="calcComp out">
 	          	<TextBox onChange={handleTextBoxChange} className="textBox" value={AppProps.compOut}/>
 	          	<DropDown onChange={handleDropDownChange}>
-		            {options}
+		            {optionsOut}
 	          	</DropDown>
 	        </CalcComp>
         </div>

@@ -1,18 +1,23 @@
 const measurementStates = {
     'Volume': {
-      measurements:['teaspoon', 'tablespoon', 'cup', 'fluid ounce', 'pint', 'quart', 'gallon', 'milliliter', 'liter']
+    	optionSplit:false,
+      measurements:[['teaspoon', 'tablespoon', 'cup', 'fluid ounce', 'pint', 'quart', 'gallon', 'milliliter', 'liter']]
     },
     'Weight': {
-      measurements:['gram', 'kilogram', 'pound', 'ounce']
+    	optionSplit:false,
+      measurements:[['gram', 'kilogram', 'pound', 'ounce']]
     },
     'Time': {
-      measurements:['second', 'minute', 'hour', 'day']
+    	optionSplit:false,
+      measurements:[['second', 'minute', 'hour', 'day']]
     },
     'Temp': {
-      measurements:['Celsius', 'Farenheit']
+    	optionSplit:false,
+      measurements:[['Celsius', 'Farenheit']]
     },
     'Special': {
-    	measurements:['dash']	
+    	optionSplit:true,
+    	measurements:[['smidgen','dash', 'clove', 'pinch', 'dollop'], ['teaspoon', 'tablespoon', 'cup', 'fluid ounce']]
     }
 }
 

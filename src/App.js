@@ -14,14 +14,14 @@ const App = () => {
   let [outMeasurement, setOutMeasurement] = useState('teaspoon'); 
 
   let handleMeasurementTypeChange = (e) => {
-    console.log('---handleMeasurementTypeChange called from App.js---')
     document.getElementsByClassName('selected')[0].classList.remove('selected');
     setMeasurementType(e.target.innerHTML);
     e.target.classList.add('selected');
     setCompInValue(0);
     setCompOutValue(0);
-    setInMeasurement(measurementStates[e.target.innerHTML].measurements[0])
-    setOutMeasurement(measurementStates[e.target.innerHTML].measurements[0])
+    setInMeasurement(measurementStates[e.target.innerHTML].measurements[0][0]);
+    let outValSet = e.target.innerHTML == 'Special' ? measurementStates[e.target.innerHTML].measurements[1][0] : measurementStates[e.target.innerHTML].measurements[0][0];
+    setOutMeasurement(outValSet);
   }
 
   return (

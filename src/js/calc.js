@@ -165,7 +165,64 @@ const measurementConversions = {
     	}
     },
     'Special': {
-      measurements:['dash']
+    	'smidgen':{
+    		'teaspoon':(1/32), 
+    		'tablespoon':(1/96), 
+    		'cup': (1/1536), 
+    		'fluid ounce':(1/192)
+    	}, 
+    	'dash':{
+    		'teaspoon':(1/16), 
+    		'tablespoon':(1/48), 
+    		'cup':(1/768), 
+    		'fluid ounce':(1/96)
+    	}, 
+    	'clove':{
+    		'teaspoon':1, 
+    		'tablespoon':(1/3), 
+    		'cup':(1/48), 
+    		'fluid ounce':(1/6)
+    	}, 
+    	'pinch':{
+    		'teaspoon':(1/8), 
+    		'tablespoon':(1/24), 
+    		'cup': (1/384), 
+    		'fluid ounce':(1/48)
+    	}, 
+    	'dollop':{
+    		'teaspoon':3.75, 
+    		'tablespoon':1.25, 
+    		'cup':(5/64), 
+    		'fluid ounce':(5/8)
+    	},
+    	'teaspoon':{
+    		'smidgen':32,
+    		'dash':16,
+    		'clove':1,
+    		'pinch':8,
+    		'dollop':(4/15)
+    	},
+    	'tablespoon':{
+    		'smidgen':96, 
+    		'dash':48, 
+    		'clove':3, 
+    		'pinch':24, 
+    		'dollop':(4/5), 
+    	},
+    	'cup':{
+    		'smidgen': 1536, 
+    		'dash':768, 
+    		'clove':48, 
+    		'pinch': 384, 
+    		'dollop':(64/5), 
+    	},
+    	'fluid ounce':{
+    		'smidgen':192,
+    		'dash':96,
+    		'clove':6,
+    		'pinch':48,
+    		'dollop':(8/5)
+    	}
     }
 }
 
